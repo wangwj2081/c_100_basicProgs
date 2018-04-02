@@ -108,12 +108,6 @@ int main()
     printf("*\n");
     printf("*\n");
     printf("****\n");
-    printf("sizeof(int)=%d\n", sizeof(int));
-    printf("sizeof(long)=%d\n", sizeof(long));
-    printf("sizeof(long int)=%d\n", sizeof(long int));
-    printf("sizeof(short)=%d\n", sizeof(short));
-    printf("sizeof(double)=%d\n", sizeof(double));
-    printf("sizeof(float)=%d\n", sizeof(float));
     return 1;
 }
 #endif
