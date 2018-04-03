@@ -9,8 +9,11 @@
 
 #define ONE    0
 #define TWO    0
-#define THREE  1
+#define THREE  0
 #define SIX    0
+#define SEVEN  0
+#define EIGHT  1
+
 #if ONE
 /***  debug by jyf
 #define CHECK(num2,num1) do{if(num2 == num1){return FAIL;}}while(0)
@@ -109,5 +112,33 @@ int main()
     printf("*\n");
     printf("****\n");
     return 1;
+}
+#endif
+
+#if SEVEN
+main()
+{
+char a=176,b=219;
+printf("%c%c%c%c%c\n",b,a,a,a,b);
+printf("%c%c%c%c%c\n",a,b,a,b,a);
+printf("%c%c%c%c%c\n",a,a,b,a,a);
+printf("%c%c%c%c%c\n",a,b,a,b,a);
+printf("%c%c%c%c%c\n",b,a,a,a,b);
+}
+#endif
+
+#if EIGHT
+main()
+{
+    int i = 0;
+    int j = 0;
+    for(i=1;i<10;i++)
+    {
+        for(j=1;j<=i;j++)
+        {
+            printf("%d*%d=%-2d ", j, i, i*j);/* %-2d 表示 数值占两位，且左对齐*/
+        }
+        printf("\n");
+    }
 }
 #endif
