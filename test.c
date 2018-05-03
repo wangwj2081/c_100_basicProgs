@@ -16,15 +16,52 @@
 #define SEVEN  0
 #define EIGHT  0
 #define NINE   0
+// 10 -- 19
 #define TEN    0
 #define ELEVEN   0
 #define TWELVE   0
-#define FOURTEEN 1
-#define TWENTY_SIX    0
-#define TWENTY_EIGHT    0
-#define THIRTY_ONE    0
+#define THIRTEEN 0
+#define FOURTEEN 0
+#define FIVETEEN 0
+#define SIXTEEN  0
+#define SEVENTEEN  0
+#define EIGHTTEEN  0
+#define NINETEEN   0 //还有问题
 
+// 20 --29
+#define TWENTY     0
+#define TWENTY_ONE     0
+#define TWENTY_TWO   0 //观察 哪个算法简单
+#define TWENTY_THREE 0
+#define TWENTY_FOUR  0
+#define TWENTY_FIVE  0
+#define TWENTY_SIX    0
+#define TWENTY_SEVEN  0
+#define TWENTY_EIGHT  0
+#define TWENTY_NINE  0
+
+/*30 -39*/
+#define THIRTY    0
+#define THIRTY_ONE    0
+#define THIRTY_SIX    0
+#define THIRTY_SEVEN    0
+#define THIRTY_NINE 0
+
+/**56 ~~ 60**/
+//#include "graphics.h"
+//in linux env,how to draw graphices
+
+/**62 ~~ 65**/
+//62 #include "graphics.h"
+//63 #include "graphics.h"
+//64 #include "graphics.h" #include "conio.h"
+//65 #include "conio.h"
+
+
+/*****/
+#define SIXTY_NINE 1
 #define SEVENTY 0
+
 #if ONE
 /***  debug by jyf
 #define CHECK(num2,num1) do{if(num2 == num1){return FAIL;}}while(0)
@@ -514,7 +551,38 @@ printf("\nThe total is %d",h);
 #endif
 #endif
 
+#if THIRTEEN
+/*main()
+{
+  int num, bai,shi,ge,ix=0;
+  for(ix=100; ix<1000; ix++)
+  {
+    bai = ix/100;
+    shi = ix/10%10;
+    ge = ix%10;
+    
+    if(ix == bai*bai*bai + shi*shi*shi + ge*ge*ge){num++;printf("ix=%d\n", ix);}
+  }
+  printf("num=%d\n", num);
+}*/
+ main()
+{
+int i,j,k,n;
+printf("'water flower'number is:");
+for(n=100;n<1000;n++)
+{
+i=n/100;/*分解出百位*/
+j=n/10%10;/*分解出十位*/
+k=n%10;/*分解出个位*/
+if(i*100+j*10+k==i*i*i+j*j*j+k*k*k)
+{
+printf("%-5d",n);
+}
+}
+printf("\n");
+}
 
+#endif
 #if FOURTEEN
 main()
 {
@@ -541,6 +609,432 @@ main()
    printf("%d \n",n);
 }
 #endif
+
+#if FIVETEEN
+main()
+{
+  int score = 0;
+  char grade= 0;
+  printf("Input the score:\n");
+  scanf("%d", &score);
+  if(score>100 || score<0){printf("error score\n"); return;}
+  grade = (score>=90)?'A':(score>=60)?'B':'C';
+  printf("it is %c\n", grade);
+}
+#endif
+
+#if SIXTEEN
+#if 1
+main()
+{
+int m=0, n=0;
+int num1=0, num2=0;
+int t=0;//temp
+printf("Please input two number:\n");
+scanf("%d %d", &num1, &num2);
+m=num1;
+n=num2;
+printf("m=%d, n=%d\n", m, n);
+
+if(m<=0 || n<=0)
+{
+    printf("error. it <= 0\n");
+    return;
+}
+if(m<n){t=m;m=n;n=t;}
+
+while(0!=n){
+    t=m%n;
+    m=n;
+    n=t;
+   }
+
+printf("Max common divisor = %d\n", m);
+printf("Min common multiple = %d\n", num1*num2/m);
+}
+#else
+main()
+{
+int m=0, n=0;
+int ix=0;//temp
+printf("Please input two number:\n");
+scanf("%d %d", &m, &n);
+printf("m=%d, n=%d\n", m, n);
+
+if(m<=0 || n<=0)
+{
+    printf("error. it <= 0\n");
+    return;
+}
+if(m<n){ix=m;m=n;n=ix;}
+
+for(ix=n;ix>0;ix--)
+{
+    if(0==n%ix&&0==m%ix)
+    {
+        printf("Max common divisor:%d\n", ix);
+        break;
+    }
+}
+
+for(ix=1;ix<=n;ix++)
+{
+    if(0 == ix*m%n)
+    {
+        printf("Min common multiple:%d\n", ix*m);
+        break;    
+    }
+}
+}
+#endif
+#endif
+
+#if SEVENTEEN
+main()
+{
+  char c = 0;
+  int letter=0, space=0, digit=0, other=0;
+  char aBuf[20];
+  char *pc;
+
+  memset(aBuf, 0 ,20);
+  pc = gets(aBuf);
+
+  printf("aBuf=%s, pc=%s\n", aBuf, pc);
+
+  //while('\n' != (c=getchar()))
+  while(0 != (c=*pc++))
+  {
+    if((c>='a'&&c<='z') || (c>='A'&&c<='Z'))
+    {letter++;}
+    else if(c>='0'&&c<='9')
+    {digit++;}
+    else if(c == ' ')
+    {space++;}
+    else
+    {other++;}
+  }
+  printf("letter:%d, space:%d, digit:%d, other:%d\n", letter, space, digit, other);
+}
+#endif
+
+#if EIGHTTEEN
+#if 0
+long func(int a, int n)
+{
+    int ix, sum=0;
+    if(0==n)
+    {
+        return 0;
+    }
+    for(ix=0; ix<n; ix++)
+    {
+        sum = sum*10 + a;
+    }
+    return sum+func(a, n-1);
+}
+main()
+{
+    int a =0, n=0;
+
+    printf("input a n:\n");
+    scanf("%d %d", &a, &n);
+
+    printf("a+aa+... = %ld \n", func(a, n));
+}
+#endif
+#if 1
+
+main()
+{
+int a,n,count=1;
+long int sn=0,tn=0;
+printf("please input a and n\n");
+scanf("%d %d",&a,&n);
+printf("a=%d,n=%d\n",a,n);
+while(count<=n)
+{
+tn=tn+a;
+sn=sn+tn;
+a=a*10;
+++count;
+}
+printf("a+aa+...=%ld \n",sn);
+}
+
+#endif
+#endif
+
+#if NINETEEN
+#if 0
+main()
+{
+  int ix, jx, count=0, flag=0;
+  int num=1;
+  int buf[1000];
+    for(ix=1;ix<1000;ix++)
+    {
+        num = ix;
+        count = 0;
+        memset(buf, 0, 1000);
+        for(jx=2;jx<num;jx++)
+        {
+            while(jx != num)
+            {
+                if(0 == num%jx)
+                {
+                    num = num/jx;
+                    buf[count++]=jx;
+                }
+                else
+                    break;
+            }
+        }
+
+        num = 0; //计算 因子 之和
+        for(jx=0;jx<count;jx++)
+        {
+            num += buf[jx];
+        }
+        if(num == ix)
+        {printf("find %d\n", ix);if(0 == flag++%10)printf("\n");}
+    }
+}
+#endif
+
+main()
+{
+static int k[10];
+int i,j,n,s;
+    for(j=2;j<1000;j++)
+    {
+        n=-1;
+        s=j;
+        for(i=1;i<j;i++)
+        {
+            if((j%i)==0)
+            {    n++;
+                s=s-i;
+                k[n]=i;
+            }
+        }
+        if(s==0)
+        {
+            printf("%d is a wanshu",j);
+            for(i=0;i<n;i++)
+            printf("%d,",k[i]);
+            printf("%d\n",k[n]);
+        }
+    }
+}
+#endif
+
+#if TWENTY
+/****
+一球从100米高度自由落下，每次落地后反跳回原高度的一半；再落下，求它在
+　　　第10次落地时，共经过多少米？第10次反弹多高？ 
+****/
+#if 1
+main()
+{
+  float height = 100, sum = 100;
+  int jx = 0;
+  for(jx=1; jx<10; jx++)
+  {
+    sum += 100/pow(2,jx)*2;
+    /**float aa;int ix;
+    for(ix=0,aa=1;ix<jx;ix++)
+        aa=aa*2;
+    sum += 100/aa*2;**/
+  }
+
+  printf("10th sum=%f, 10th height=%f\n", sum, 100/pow(2,jx));
+}
+#endif
+#if 0
+main()
+{
+float sn=100.0,hn=sn/2;
+int n;
+for(n=2;n<=10;n++)
+{
+sn=sn+2*hn;/*第n次落地时共经过的米数*/
+hn=hn/2; /*第n次反跳高度*/
+}
+printf("the total of road is %f\n",sn);
+printf("the tenth is %f meter\n",hn);
+}
+#endif
+#endif
+
+#if TWENTY_ONE
+#if 0
+int func(int n)
+{
+if(10 == n)
+    return 1;
+else if(n>0)
+{
+    return (func(n+1)+1)*2;
+}
+else
+{printf("error, n=%d\n", n);}
+
+return 0;
+}
+
+main()
+{
+  printf("1st sum = %d\n",func(1)); 
+}
+#endif
+main()
+{
+int day,x1,x2;
+day=9;
+x2=1;
+while(day>0)
+{x1=(x2+1)*2;/*第一天的桃子数是第2天桃子数加1后的2倍*/
+x2=x1;
+day--;
+}
+printf("the total is %d\n",x1);
+}
+
+#endif
+
+#if TWENTY_TWO
+#if 0
+main()
+{
+    char a,b,c;
+    for(a='x'; a<='z'; a++)
+    {
+        for(c='x'; c<='z'; c++)
+        {
+            for(b='x'; b<='z'; b++)
+            {
+                if(a!='x' && c!='x' &&c !='z')
+                {
+                    if(a!=b && a!=c && b!=c)
+                    {
+                        printf("a=%c, b=%c, c=%c\n", a, b, c);
+                        break;
+                    }
+                }
+            }
+    
+        }
+    }
+}
+#endif
+main()
+{
+char i,j,k;/*i是a的对手，j是b的对手，k是c的对手*/
+for(i='x';i<='z';i++) //a
+    for(j='x';j<='z';j++) //b
+    {
+        if(i!=j)
+            for(k='x';k<='z';k++) //c
+            {
+                if(i!=k&&j!=k)
+                { if(i!='x'&&k!='x'&&k!='z')
+                   printf("order is a--%c\tb--%c\tc--%c\n",i,j,k);
+                }
+            }
+    }
+}
+#endif
+
+#if TWENTY_THREE
+main()
+{
+int i,j,k;
+    for(i=0;i<=3;i++)
+    {
+        for(j=0;j<=2-i;j++)
+            printf(" ");
+        
+        for(k=0;k<=2*i;k++)
+            printf("*");
+        
+        printf("\n");
+    }
+
+    for(i=0;i<=2;i++)
+    {
+        for(j=0;j<=i;j++)
+            printf(" ");
+        
+        for(k=0;k<=4-2*i;k++)
+            printf("*");
+        
+        printf("\n");
+    }
+}
+#endif
+
+#if TWENTY_FOUR
+/* 2/1 + 3/2 + 5/3 +... = ? last 20 */ 
+/**main()
+{
+float sum = 0;
+float fenzi = 2, fenmu = 1, t=0;
+int ix;
+for(ix=1; ix<=20; ix++)
+{
+    sum += fenzi/fenmu;
+    t = fenzi;
+    fenzi = fenzi+fenmu;
+    fenmu = t;
+}
+
+printf("sum = %f\n", sum);
+
+}
+**/
+main()
+{
+int n,t,number=20;
+float a=2,b=1,s=0;
+for(n=1;n<=number;n++)
+{
+s=s+a/b;
+t=a;a=a+b;b=t;/*这部分是程序的关键，请读者猜猜t的作用*/
+}
+printf("sum is %9.6f\n",s);
+}
+#endif
+
+#if TWENTY_FIVE
+/*** 1+2!+3!+...+20! = ? ***/
+/**/
+main()
+{
+    long temp=1, sum=0;//使用int 会溢出
+    int jx=0;
+    for(jx=1; jx<=20; jx++)
+    {
+        temp *=jx;
+        sum += temp;
+    }
+
+    printf("1+2!+3!+...+20! = %ld\n", sum);
+}
+/**/
+/**
+main()
+{
+float n,s=0,t=1;
+for(n=1;n<=20;n++)
+{
+t*=n;
+s+=t;
+}
+printf("1+2!+3!...+20!=%e\n",s);
+}**/
+#endif
+
 #if TWENTY_SIX
 int f(int n)
 {
@@ -569,11 +1063,80 @@ main()
 }
 #endif
 
+#if TWENTY_SEVEN
+#if 0
+main()
+{
+int ix;
+char ac[5];
+printf("Please input 5 chars.\n");
+//scanf("%s", ac);
+
+for(ix=0;ix<5;ix++)
+{
+    ac[ix] = getchar();
+    //scanf("%c", &ac[ix]);
+}
+for(ix=0;ix<5;ix++)
+{
+    printf("%c ", ac[ix]);
+}
+printf("\n");
+
+for(ix=5;ix>0;ix--)
+{
+    printf("%c ", ac[ix-1]);
+}
+printf("\n");
+
+}
+#endif
+#if 1
+main()
+{
+    int i=5;
+    void palin(int n);
+    printf("\40:");
+    palin(i);
+    printf("\n");
+}
+void palin(n)
+int n;
+{
+    char next;
+    if(n<=1)
+    {
+        next=getchar();
+        printf("\n\0:");
+        putchar(next);
+    }
+    else
+    {
+        next=getchar();
+        palin(n-1);
+        putchar(next);
+    }
+}
+#endif
+#endif
 #if TWENTY_EIGHT
+int func(unsigned int n)
+{
+    if(1 == n) return 10;
+    else
+    return func(n-1)+2;
+}
+main()
+{
+    printf("The age of 5th person is %u\n", func(5));
+}
+#endif
+
+#if TWENTY_NINE
 main()
 {
     long num = 0;
-
+    printf("Please input a number:\n");
     scanf("%ld", &num);
     if(num > 99999)
     {printf("too big\n"); return;}
@@ -588,6 +1151,38 @@ main()
         num /= 10;
     };
     printf("\n");
+}
+#endif
+
+#if THIRTY
+#if 0
+main()
+{
+    long num = 0;
+    printf("Please input a 5 wei number:\n");
+    scanf("%ld", &num);
+    if(num<10000 || num>99999)
+        {printf("error num, %ld\n", num);return;}
+
+    if(num/10000==num%10 && num/1000%10==num%100/10)
+        printf("hui wen shu\n");
+    else
+        printf(" not hui wen shu\n");
+
+}
+#endif
+main( )
+{
+long ge,shi,qian,wan,x;
+scanf("%ld",&x);
+wan=x/10000;
+qian=x%10000/1000;
+shi=x%100/10;
+ge=x%10;
+if (ge==wan&&shi==qian)/*个位等于万位并且十位等于千位*/
+　printf("this number is a huiwen\n");
+else
+　printf("this number is not a huiwen\n");
 }
 #endif
 
@@ -633,8 +1228,302 @@ pcBuf[6] = pc7;
 }
 #endif
 
-#if SEVENTY
 
+#if THIRTY_SIX
+#if 0
+main()
+{
+  int ix, jx, count=1;
+  for(ix=2; ix<100; ix++)
+  {
+    for(jx=2;jx<ix;jx++)
+    {
+        if(0 == ix%jx) break;
+    }
+    if(ix == jx)
+    {
+        printf("%5d ", ix);
+        if(0 == count++%5) printf("\n");
+    }
+  }
+  printf("\n");
+}
+#endif
+
+#define N 101
+main()
+{
+int i,j,line,a[N];
+for(i=2;i<N;i++) 
+    a[i]=i;
+
+for(i=2;i<sqrt(N);i++)
+    for(j=i+1;j<N;j++)
+    {
+        if(a[i]!=0&&a[j]!=0)
+        if(a[j]%a[i]==0)
+        a[j]=0;
+    }
+    printf("\n");
+
+    for(i=2,line=0;i<N;i++)
+    {
+        if(a[i]!=0)
+        {
+            printf("%5d",a[i]);
+            line++;
+        }
+        if(line==10)
+        {
+            printf("\n");
+            line=0;
+        }
+    }
+}
+#endif
+
+#if THIRTY_SEVEN
+#define MAX 5
+main()
+{
+    int ix, jx, temp;
+    int num[MAX];
+    printf("Please input 10 numbers:\n");
+    for(ix=0; ix<MAX;)
+    {
+    scanf("%d", &num[ix++]);
+    }
+
+    for(ix=0; ix<MAX;)
+    {
+    printf("%d ", num[ix]);
+    ix++;
+    }
+        printf("\n");
+
+
+    for(ix=0; ix<MAX; ix++)
+    {
+        for(jx=ix+1; jx<MAX; jx++)
+        {
+            if(num[ix]>num[jx])
+            {
+                temp = num[ix];
+                num[ix] = num[jx];
+                num[jx] = temp;
+            }
+        }
+    }
+    
+    for(ix=0; ix<MAX;)
+    {
+    printf("%d ", num[ix]);
+    ix++;
+    }
+    printf("\n");
+
+
+}
+#endif
+
+#if THIRTY_NINE
+#if 0
+main()
+{
+    int a[11]={1,4,6,9,13,16,19,28,40,100,120};
+    int ix;
+    int tm=0, num = 0;
+    int temp[12];
+    printf("Please input a number:\n");
+    scanf("%d", &num);
+    memset(temp, 0, sizeof(temp));
+
+    for(ix=0; ix<11; ix++)
+    {printf("%d ", a[ix]);}
+    printf("\n");
+
+    for(ix=0; ix<11;ix++)
+    {
+        if(a[ix]<num)
+        {
+           temp[ix] = a[ix];
+        }
+        else
+        {
+            temp[ix] = num;
+            break;
+        }
+    }
+    printf("ix =%d \n", ix);
+
+    if(ix < 11)
+    memcpy(&temp[ix+1], &a[ix], (11-ix)*sizeof(int));
+    else
+    temp[ix]=num;
+
+    for(ix=0; ix<12; ix++)
+    {
+        printf("%d ", temp[ix]);
+    }
+    printf("\n");
+}
+#endif
+#if 0
+main()
+{
+    int a[11]={1,4,6,9,13,16,19,28,40,100};
+    int ix=0, num=0;
+    printf("Please input a number.\n");
+    scanf("%d", &num);
+    while(ix<11){printf("%d ", a[ix++]);}
+    printf("\n");
+
+    for(ix=9; ix>=0; ix--)
+    {
+        if(num < a[ix])
+        {
+            a[ix+1]=a[ix];
+        }
+        else
+        {
+            a[ix+1]=num;
+            break;
+        }
+    }
+    if(0 > ix)
+    {a[0] = num;}
+    ix=0;
+    while(ix<11){printf("%d ", a[ix++]);}
+    printf("\n");
+}
+#endif
+main()
+{
+int a[11]={1,4,6,9,13,16,19,28,40,100};
+int temp1,temp2,number,end,i,j;
+printf("original array is:\n");
+for(i=0;i<10;i++)
+　printf("%5d",a[i]);
+printf("\n");
+
+printf("insert a new number:");
+scanf("%d",&number);
+end=a[9];
+
+if(number>end)
+　a[10]=number;
+else
+    {for(i=0;i<10;i++)
+    {if(a[i]>number)
+    {temp1=a[i];
+    a[i]=number;
+    for(j=i+1;j<11;j++)
+    {temp2=a[j];
+    a[j]=temp1;
+    temp1=temp2;
+    }
+    break;
+    }
+    }
+    }
+for(i=0;i<11;i++)
+　printf("%6d",a[i]);
+}
+
+#endif
+
+#if SIXTY_NINE
+#if 1
+//#define NMAX 8
+typedef struct tagTest
+{
+    int flag;
+}stTest;
+
+main()
+{
+    int total=0, dead=0, live=0;
+    int count=0, ix=0;
+    int NMAX = 50;
+    stTest st[NMAX];
+    for(ix=0; ix<NMAX; ix++)
+    {
+        st[ix].flag = 1;
+    }
+    
+    live = total = NMAX;
+    ix=0;
+
+    while(live>1)
+    {
+        if(1 == st[ix].flag)
+        {
+            count++;
+        }
+        if(3 == count)
+        {
+            st[ix].flag = 0;
+            printf("%d dead\n", ix);
+            count=0;
+            dead++;
+            live--;
+        }
+        ix++;
+        if(NMAX == ix)
+        {
+            ix = 0;
+        }
+    }
+
+    for(ix=0; ix<NMAX; ix++)
+    {
+        if(1 == st[ix].flag)
+        {
+            printf("******************\n%d live\n", ix);
+            break;
+        }
+    }
+}
+#endif
+#if 0
+#define nmax 50
+main()
+{
+    int i,k,m,n,num[nmax],*p;
+    printf("please input the total of numbers:");
+    scanf("%d",&n);
+    p=num;
+
+    for(i=0;i<n;i++)
+        *(p+i)=i+1;
+
+    i=0;
+    k=0;
+    m=0;
+
+    while(m<n-1)
+    {
+        if(*(p+i)!=0) k++;
+        
+        if(k==3)
+        {
+            *(p+i)=0;
+            k=0;//start to recount 
+            m++;//dead ++
+        }
+        i++;
+        
+        if(i==n) i=0;
+    }
+
+    while(*p==0) p++;
+
+    printf("%d is left\n",*p);
+}
+#endif
+#endif
+
+#if SEVENTY
 main()
 {
 int len;
