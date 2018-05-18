@@ -45,8 +45,16 @@
 #define THIRTY_ONE    0
 #define THIRTY_SIX    0
 #define THIRTY_SEVEN    0
+#define THIRTY_EIGHT  0
 #define THIRTY_NINE 0
 
+#define FOURTY  0
+#define FOURTY_ONE 0
+#define FOURTY_TWO 0
+#define FOURTY_THREE 0
+#define FOURTY_FOUR 0
+#define FOURTY_FIVE 0
+#define FOURTY_SIX  1
 /**56 ~~ 60**/
 //#include "graphics.h"
 //in linux env,how to draw graphices
@@ -59,8 +67,9 @@
 
 
 /*****/
-#define SIXTY_NINE 1
+#define SIXTY_NINE 0 //约瑟夫问题重点看一下
 #define SEVENTY 0
+#define SEVENTY_SEVEN 0
 
 #if ONE
 /***  debug by jyf
@@ -1321,9 +1330,52 @@ main()
     ix++;
     }
     printf("\n");
-
-
 }
+#endif
+
+#if THIRTY_EIGHT
+main()
+{
+    int aiMat[3][3]={1,2,3,4,5,6,7,8,9};
+    int ix, jx;
+    
+    for(ix=0;ix<3;ix++)//行数
+    {
+        for(jx=0;jx<3;jx++)//列数
+            printf("%3d", aiMat[ix][jx]);
+        printf("\n");//一行 输出结束
+    }
+    printf("\n");
+    
+    for(ix=0;ix<3;ix++)
+    {
+        for(jx=0;jx<3;jx++)
+        {
+            if(jx==ix || 2==jx+ix)
+                {printf("%3d", aiMat[ix][jx]);}
+            else
+                {printf("   ");}
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+#if 0
+main()
+{
+float a[3][3],sum=0;
+int i,j;
+printf("please input rectangle element:\n");
+for(i=0;i<3;i++)
+for(j=0;j<3;j++)
+scanf("%f",&a[i][j]);
+
+for(i=0;i<3;i++)
+sum=sum+a[i][i];
+
+printf("duijiaoxian he is %6.2f",sum);
+}
+#endif
 #endif
 
 #if THIRTY_NINE
@@ -1429,7 +1481,156 @@ else
 for(i=0;i<11;i++)
 　printf("%6d",a[i]);
 }
+#endif
 
+#if FOURTY
+#define fourty_N 5
+main()
+{
+int a[fourty_N]={9,6,5,4,1};
+int ix=0, t=0;
+
+while(ix<fourty_N)
+{
+    printf("%2d ", a[ix++]);
+}
+printf("\n ix=%d\n", ix);
+
+for(ix=0;ix<fourty_N/2; ix++)
+{
+    t = a[ix];
+    a[ix]= a[fourty_N-1-ix];
+    a[fourty_N-1-ix] = t;
+}
+
+for(ix=0;ix<fourty_N; ix++)
+{
+    printf("%2d ", a[ix]);
+}
+printf("\n");
+
+}
+#endif
+
+
+#if FOURTY_ONE
+void func()
+{
+    int ax = 0;
+    static int cx = 0;
+    printf("ax=%d, cx=%d\n", ax++, cx++);
+}
+
+main()
+{
+    int jx=0;
+    for(;jx<5;jx++)
+        func();
+}
+
+#endif
+
+#if FOURTY_TWO
+main()
+{
+    int i,num;
+    num=2;
+    for (i=0;i<3;i++)
+    {
+        printf("\40: The num equal %d \n",num);
+        num++;
+        {
+            auto int num=1;
+            printf("\40: The internal block num equal %d \n",num);
+            num++;
+        }
+    }
+}
+#endif
+
+#if FOURTY_THREE
+main()
+{
+    int i,num;
+    num=2;
+    for(i=0;i<3;i++)
+    {
+        printf("\40: The num equal %d \n",num++);
+        {
+        static int num=1;
+        printf("\40:The internal block num equal %d\n",num);
+        num++;
+        }
+    }
+}
+#endif
+
+#if FOURTY_FOUR
+int a,b,c;
+void add()
+{
+    int a=5;
+    c=a+b;
+}
+void main()
+{
+    a=b=2;
+    add();
+    printf("The value of c is equal to %d\n",c);
+}
+#endif
+
+#if FOURTY_FIVE
+void main()
+{
+register int i;//加快运算速度
+int tmp=0;
+for(i=1;i<=100;i++)
+tmp+=i;
+printf("The sum is %d\n",tmp);
+}
+#endif
+
+#if FOURTY_SIX
+#define SQA(x) ((x)*(x))
+#define TRUE 1
+#define FALSE 0
+#if 0
+main()
+{
+int num=0;
+int ret = TRUE;
+
+while(ret)
+{
+    scanf("%d", &num);
+    printf("%d*%d=%d\n", num, num, SQA(num));
+
+    if(num > 50)
+    {
+        ret = FALSE;
+    }
+}
+}
+#else
+
+void main()
+{
+int num;
+int again=1;
+printf("\40: Program will stop if input value less than 50.\n");
+while(again)
+{
+printf("\40:Please input number==>");
+scanf("%d",&num);
+printf("\40:The square for this number is %d \n",SQA(num));
+if(num>=50)
+again=TRUE;
+else
+again=FALSE;
+}
+}
+#endif
 #endif
 
 #if SIXTY_NINE
@@ -1554,6 +1755,35 @@ return n;
 }
 
 #endif
+
+#if SEVENTY_SEVEN
+extern char **environ;
+main()
+{
+    int jx = 0;
+    char** ppcTemp = NULL;
+    char* apcRen[] = {"LiMing", "XiaoHong", "WangXiao", "LiGang", "QiCang"};
+    printf("sizeof(apcRen)=%ld, sizeof(char*)=%ld\n", sizeof(apcRen), sizeof(char*));
+    for(jx=0; jx<(sizeof(apcRen)/sizeof(char*)); jx++)
+    {
+        ppcTemp = &apcRen[jx];
+        printf("%s\n", *ppcTemp);
+    }
+
+    ppcTemp = environ;
+    //for(jx=0; NULL!=ppcTemp+jx; jx++)
+    for(jx=0; jx<5; jx++)
+    {
+	if(NULL != ppcTemp+jx)
+        printf("%s\n", *(ppcTemp+jx));
+    }
+ppcTemp = NULL;
+}
+
+#endif
+
+
+
 #if 0
 main()
 {
